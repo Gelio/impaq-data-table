@@ -7,4 +7,6 @@ declare var require: {
 };
 
 require('angular');
+require('angular-resource');
+
 require('./app/app');
