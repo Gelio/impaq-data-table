@@ -1,0 +1,11 @@
+{
+  "name": "impaq-data-table",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "angular": "registry:dt/angular#1.2.0+20150719215757",
+    "angular-mocks": "registry:dt/angular-mocks#1.2.0+20140726013554",
+    "angular-resource": "registry:dt/angular-resource#1.2.0+20140618213111",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236"
+  }
+}

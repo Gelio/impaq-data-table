@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --watch --inline --hot",
+    "build": "webpack"
   },
   "author": "Grzegorz Rozdzialik <voreny.gelio@gmail.com>",
   "repository": {
@@ -22,6 +24,10 @@
     "angular": "^1.2.29",
     "angular-mocks": "^1.2.29",
     "angular-resource": "^1.2.29",
-    "bootstrap": "^4.0.0-alpha.2"
+    "bootstrap": "^4.0.0-alpha.2",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
