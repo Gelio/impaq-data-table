@@ -1,3 +1,5 @@
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
     context: __dirname,
     entry: './index.ts',
@@ -16,6 +18,11 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './node_modules/bootstrap/dist/css/bootstrap.css', to: './bootstrap.css' }
+        ])
+    ],
     
     devServer: {
         contentBase: './dist'

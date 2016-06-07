@@ -1,5 +1,4 @@
 /// <reference path="./typings/main.d.ts" />
-
 // Declare require
 declare var require: {
     <T>(path: string): T;
@@ -8,8 +7,4 @@ declare var require: {
 };
 
 require('angular');
-
-angular.module('app', [])
-    .controller('AppCtrl', $scope => {
-        $scope.text = "Hi!";
-    });
+require('./app/app');
