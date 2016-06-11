@@ -1,15 +1,11 @@
 import WebService from './services/Web-Service';
+import DataTableController from './controllers/DataTable/DataTableController';
 
 // TODO: split controller into a different file
 // TODO: add tests
 
 var app = angular.module('app', [WebService.name])
-    .controller('AppCtrl', function AppCtrl(WebService) {
-        this.hi = '5';
-
-        console.log(WebService);
-        console.log(this);
-    });
+    .controller('DataTableCtrl', DataTableController);
 
 
 // Bootstrap Angular when everything is loaded

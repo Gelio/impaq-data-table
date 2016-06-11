@@ -1,9 +1,27 @@
-var WebService = angular.module('WebServiceModule', ['ngResource'])
-    .factory('WebService', ($http, $resource) => {
-        // TODO: do this service
-        return {
-            sayHi: 'Hello-World'
-        };
-    });
+import config from '../config';
+import User from '../User';
 
-export default WebService;
+class WebService {
+    constructor(private $http, private $resource) {
+        console.log('changed');
+    }
+
+    remove(user: User) {
+
+    }
+
+    edit(user: User) {
+
+    }
+
+    findAll() {
+
+    }
+
+    find() {
+
+    }
+}
+
+export default angular.module('WebServiceModule', ['ngResource'])
+    .factory('WebService', ($http, $resource) => new WebService($http, $resource));
