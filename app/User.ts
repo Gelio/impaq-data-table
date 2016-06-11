@@ -19,5 +19,5 @@ export class User {
 export interface IUserView extends User {
     selected: boolean;
     edited: boolean;
-    saved: boolean;
+    frozen: boolean;
 }

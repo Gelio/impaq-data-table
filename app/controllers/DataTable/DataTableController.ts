@@ -13,6 +13,7 @@ export default class DataTableController {
 
     public userRemove(index: number) {
         const user = this.users[index];
+        user.frozen = true;
         // TODO: disable forms while user is being deleted
         // TODO: Delete user from the list only after the promise succeeded
         this.WebService.remove(user);
@@ -20,6 +21,7 @@ export default class DataTableController {
 
     public userSave(index: number) {
         const user = this.users[index];
+        user.frozen = true;
         console.log('Saving user', index, this.users[index]);
         // TODO: disable forms while user is being saved
         // TODO: change 'edited' to false after it is saved
@@ -27,17 +29,21 @@ export default class DataTableController {
     }
 
     public editSelected() {
+        let count = 0;
         for (let user of this.users) {
-            if (user.selected)
+            if (user.selected && !user.frozen) {
                 user.edited = true;
+                count++;
+            }
         }
 
-        this.editing = true;
+        if (count > 0)
+            this.editing = true;
     }
 
     public saveSelected() {
         for (let i = 0; i < this.users.length; i++) {
-            if (this.users[i].selected)
+            if (this.users[i].selected && !this.users[i].frozen)
                 this.userSave(i);
         }
 
@@ -54,6 +60,7 @@ export default class DataTableController {
             this.users = response.data.users.map(user => {
                 user.selected = false;
                 user.edited = false;
+                user.frozen = false;
                 return user;
             });
     }

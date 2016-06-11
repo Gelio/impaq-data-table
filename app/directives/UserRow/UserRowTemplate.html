@@ -1,6 +1,6 @@
-<tr ng-class="{'table-active': user.selected}">
+<tr ng-class="{'table-active': user.selected && !user.frozen, 'table-warning': user.frozen}">
     <td>
-        <input type="checkbox" ng-model="user.selected">
+        <input type="checkbox" ng-model="user.selected" ng-disabled="user.frozen">
     </td>
     <td>
         {{user.id}}
@@ -9,42 +9,42 @@
         <span ng-show="!user.edited">
             {{user.name}}
         </span>
-        <input type="text" class="form-control" ng-model="user.name" ng-show="user.edited">
+        <input type="text" class="form-control" ng-model="user.name" ng-show="user.edited" ng-disabled="user.frozen">
     </td>
     <td>
         <span ng-show="!user.edited">
             {{user.surname}}
         </span>
-        <input type="text" class="form-control" ng-model="user.surname" ng-show="user.edited">
+        <input type="text" class="form-control" ng-model="user.surname" ng-show="user.edited" ng-disabled="user.frozen">
     </td>
     <td>
         <span ng-show="!user.edited">
             {{user.birthDate}}
         </span>
-        <input type="text" class="form-control" ng-model="user.birthDate" ng-show="user.edited">
+        <input type="text" class="form-control" ng-model="user.birthDate" ng-show="user.edited" ng-disabled="user.frozen">
     </td>
     <td>
         <span ng-show="!user.edited">
             {{user.mobile}}
         </span>
-        <input type="text" class="form-control" ng-model="user.mobile" ng-show="user.edited">
+        <input type="text" class="form-control" ng-model="user.mobile" ng-show="user.edited" ng-disabled="user.frozen">
     </td>
     <td>
         <span ng-show="!user.edited">
             {{user.address}}
         </span>
-        <input type="text" class="form-control" ng-model="user.address" ng-show="user.edited">
+        <input type="text" class="form-control" ng-model="user.address" ng-show="user.edited" ng-disabled="user.frozen">
     </td>
     <td>
         <span ng-show="!user.edited">
             <!-- TODO: add click events on these buttons -->
-            <button role="button" class="btn btn-primary" ng-click="user.edited = true">Edit</button>
-            <button role="button" class="btn btn-danger" ng-click="remove()">Remove</button>
+            <button role="button" class="btn btn-primary" ng-click="user.edited = true" ng-disabled="user.frozen">Edit</button>
+            <button role="button" class="btn btn-danger" ng-click="remove()" ng-disabled="user.frozen">Remove</button>
         </span>
         <span ng-show="user.edited">
             <!-- TODO: add click events on these buttons -->
-            <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
-            <button role="button" class="btn btn-secondary" ng-click="user.edited = false">Cancel</button>
+            <button role="button" class="btn btn-primary" ng-click="save()" ng-disabled="user.frozen">Save</button>
+            <button role="button" class="btn btn-secondary" ng-click="user.edited = false" ng-disabled="user.frozen">Cancel</button>
         </span>
     </td>
 </tr>
