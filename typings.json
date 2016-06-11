@@ -6,6 +6,7 @@
     "angular": "registry:dt/angular#1.2.0+20150719215757",
     "angular-mocks": "registry:dt/angular-mocks#1.2.0+20140726013554",
     "angular-resource": "registry:dt/angular-resource#1.2.0+20140618213111",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
     "node": "registry:dt/node#6.0.0+20160608110640"
   }
