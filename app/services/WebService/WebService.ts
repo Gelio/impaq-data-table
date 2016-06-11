@@ -1,5 +1,5 @@
-import config from '../config';
-import { User } from '../User';
+import config from '../../config';
+import { User } from '../../User';
 import IHttpPromise = ng.IHttpPromise;
 import IHttpService = ng.IHttpService;
 

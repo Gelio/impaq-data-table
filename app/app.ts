@@ -1,4 +1,4 @@
-import WebService from './services/Web-Service';
+import WebService from './services/WebService/WebService';
 import DataTableController from './controllers/DataTable/DataTableController';
 import UserRowDirective from './directives/UserRow/UserRowDirective';
 
