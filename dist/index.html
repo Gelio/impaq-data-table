@@ -28,8 +28,8 @@
                     <th>Address</th>
                     <th>
                         <!-- TODO: add functionalities to these buttons -->
-                        <button role="button" class="btn btn-primary" ng-show="!vm.editing">Edit selected</button>
-                        <button role="button" class="btn btn-success" ng-show="vm.editing">Save</button>
+                        <button role="button" class="btn btn-primary" ng-show="!vm.editing" ng-click="vm.editSelected()">Edit selected</button>
+                        <button role="button" class="btn btn-success" ng-show="vm.editing" ng-click="vm.saveSelected()">Save selected</button>
                     </th> <!-- options column -->
                 </tr>
             </thead>

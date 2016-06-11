@@ -1,11 +1,11 @@
 import {User, IUserView} from '../../User';
 
-function UserRowController(scope, element, attrs) {
+function UserRowController(scope) {
     let backup;
 
-    scope.beginEdit = () => {
+    scope.createBackup = () => {
         backup = JSON.parse(JSON.stringify(scope.user));
-        scope.user.edited = true;
+        backup.edited = false;  // When we revert to the backup we don't want to edit anymore
     };
 
     scope.cancelEdit = () => {
@@ -14,6 +14,13 @@ function UserRowController(scope, element, attrs) {
             if (backup.hasOwnProperty(key))
                 scope.user[key] = backup[key];
     };
+
+    scope.$watch('user.edited', (value) => {
+        if (value === true)
+            scope.createBackup();
+        else
+            scope.cancelEdit();
+    });
 }
 
 function UserRowDirective() {
@@ -32,4 +39,3 @@ function UserRowDirective() {
 
 export default angular.module('UserRowModule', [])
     .directive('userRow', UserRowDirective);
-

@@ -38,13 +38,13 @@
     <td>
         <span ng-show="!user.edited">
             <!-- TODO: add click events on these buttons -->
-            <button role="button" class="btn btn-primary" ng-click="beginEdit()">Edit</button>
+            <button role="button" class="btn btn-primary" ng-click="user.edited = true">Edit</button>
             <button role="button" class="btn btn-danger" ng-click="remove()">Remove</button>
         </span>
         <span ng-show="user.edited">
             <!-- TODO: add click events on these buttons -->
             <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
-            <button role="button" class="btn btn-secondary" ng-click="cancelEdit()">Cancel</button>
+            <button role="button" class="btn btn-secondary" ng-click="user.edited = false">Cancel</button>
         </span>
     </td>
 </tr>

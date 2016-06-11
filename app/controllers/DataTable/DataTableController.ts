@@ -3,7 +3,6 @@ import {User, IUserView} from '../../User';
 export default class DataTableController {
     public users: IUserView[];
     public error: string = '';
-    public selectedCount: number = 0;
     public editing: boolean = false;
 
     constructor(private WebService) {
@@ -23,7 +22,26 @@ export default class DataTableController {
         const user = this.users[index];
         console.log('Saving user', index, this.users[index]);
         // TODO: disable forms while user is being saved
+        // TODO: change 'edited' to false after it is saved
         this.WebService.edit(user);
+    }
+
+    public editSelected() {
+        for (let user of this.users) {
+            if (user.selected)
+                user.edited = true;
+        }
+
+        this.editing = true;
+    }
+
+    public saveSelected() {
+        for (let i = 0; i < this.users.length; i++) {
+            if (this.users[i].selected)
+                this.userSave(i);
+        }
+
+        this.editing = false;
     }
 
     public handleError(response) {
