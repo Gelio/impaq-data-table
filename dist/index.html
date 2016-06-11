@@ -12,8 +12,32 @@
     </div>
 
     <div class="container" ng-controller="DataTableCtrl as vm">
-        <table>
+        <div class="alert alert-warning" ng-show="vm.error">
+            <strong>An error occurred!</strong> {{vm.error}}
+        </div>
 
+        <table class="table" ng-hide="vm.error" ng-show="vm.users">
+            <thead>
+                <tr>
+                    <th></th> <!-- checkboxes column -->
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Date of birth</th>
+                    <th>Mobile number</th>
+                    <th>Address</th>
+                    <th>
+                        <!-- TODO: add functionalities to these buttons -->
+                        <button role="button" class="btn btn-primary" ng-show="!vm.editing">Edit selected</button>
+                        <button role="button" class="btn btn-success" ng-show="vm.editing">Save</button>
+                    </th> <!-- options column -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in vm.users track by user.id" user-row user="user" remove="vm.userRemove($index)" save="vm.userSave($index)">
+                    <!-- This is filled in by the user-row directive -->
+                </tr>
+            </tbody>
         </table>
     </div>
 

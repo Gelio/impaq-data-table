@@ -1,4 +1,4 @@
-export default class User {
+export class User {
     public id: number;
     public name: string;
     public surname: string;
@@ -14,4 +14,9 @@ export default class User {
         this.mobile = mobile;
         this.address = address;
     }
+}
+
+export interface IUserView extends User {
+    selected: boolean;
+    edited: boolean;
 }

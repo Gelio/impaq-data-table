@@ -1,9 +1,10 @@
 import config from '../config';
-import User from '../User';
+import { User } from '../User';
 import IHttpPromise = ng.IHttpPromise;
+import IHttpService = ng.IHttpService;
 
 class WebService {
-    constructor(private $http, private $resource) { }
+    constructor(private $http: IHttpService) { }
 
     public fetchInitialData(): IHttpPromise<Object> {
         return this.$http.get(config.urls.initalData);
@@ -11,7 +12,7 @@ class WebService {
 
     public edit(user: User): IHttpPromise<Object> {
         const url = config.urls.edit + user.id;
-        return this.$http.post(url, user);
+        return this.$http.post(url, <User>user);
     }
 
     public findAll(idArr: number[]): IHttpPromise<Object> {
@@ -30,9 +31,9 @@ class WebService {
 
     public remove(user: User): IHttpPromise<Object> {
         const url = config.urls.remove + user.id;
-        return this.$http.post(url, user);
+        return this.$http.post(url, <User>user);
     }
 }
 
 export default angular.module('WebServiceModule', ['ngResource'])
-    .factory('WebService', ($http, $resource) => new WebService($http, $resource));
+    .factory('WebService', $http => new WebService($http));
