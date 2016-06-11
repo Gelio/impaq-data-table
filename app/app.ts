@@ -4,7 +4,7 @@ import DataTableController from './controllers/DataTable/DataTableController';
 // TODO: split controller into a different file
 // TODO: add tests
 
-var app = angular.module('app', [WebService.name])
+angular.module('app', [WebService.name])
     .controller('DataTableCtrl', DataTableController);
 
 

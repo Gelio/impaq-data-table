@@ -1,25 +1,36 @@
 import config from '../config';
 import User from '../User';
+import IHttpPromise = ng.IHttpPromise;
 
 class WebService {
-    constructor(private $http, private $resource) {
-        console.log('changed');
+    constructor(private $http, private $resource) { }
+
+    public fetchInitialData(): IHttpPromise<Object> {
+        return this.$http.get(config.urls.initalData);
     }
 
-    remove(user: User) {
-
+    public edit(user: User): IHttpPromise<Object> {
+        const url = config.urls.edit + user.id;
+        return this.$http.post(url, user);
     }
 
-    edit(user: User) {
-
+    public findAll(idArr: number[]): IHttpPromise<Object> {
+        const params = {
+            ids: idArr.join(',')
+        };
+        return this.$http.get(config.urls.findAll, params);
     }
 
-    findAll() {
-
+    public find(id: number): IHttpPromise<Object> {
+        const params = {
+            id: id
+        };
+        return this.$http.get(config.urls.find, {params});
     }
 
-    find() {
-
+    public remove(user: User): IHttpPromise<Object> {
+        const url = config.urls.remove + user.id;
+        return this.$http.post(url, user);
     }
 }
 

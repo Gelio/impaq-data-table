@@ -1,6 +1,14 @@
+import User from '../../User';
+
 export default class DataTableController {
     constructor(WebService) {
-        console.log('I\m a controller in a different file');
-        console.log(WebService);
+        // Fetch initial data
+        WebService.fetchInitialData()
+            .then(response => {
+                console.log('Got initial data', response);
+            })
+            .catch(error => {
+                console.error('Error occured while fetching initial data', error);
+            });
     }
 }
