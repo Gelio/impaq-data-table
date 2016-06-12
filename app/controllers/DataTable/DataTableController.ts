@@ -47,7 +47,7 @@ export default class DataTableController {
                 user.frozen = false;
                 this.toaster.error('Error occurred', 'User cannot be saved (server response status: ' + error.status + ')');
 
-                //console.error('An error occurred while saving user', user, error);
+                // console.error('An error occurred while saving user', user, error);
             });
     }
 
@@ -74,7 +74,7 @@ export default class DataTableController {
     }
 
     public handleError(response) {
-        this.error = response.data;
+        this.error = response.statusText;
         console.error('Error occurred while fetching initial data', response);
     }
 
