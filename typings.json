@@ -9,5 +9,8 @@
     "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
     "node": "registry:dt/node#6.0.0+20160608110640"
+  },
+  "globalDependencies": {
+    "angularjs-toaster": "registry:dt/angularjs-toaster#0.4.13+20160317120654"
   }
 }

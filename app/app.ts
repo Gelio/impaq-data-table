@@ -5,7 +5,7 @@ import UserRowDirective from './directives/UserRow/UserRowDirective';
 // TODO: split controller into a different file
 // TODO: add tests
 
-angular.module('app', [WebService.name, UserRowDirective.name])
+angular.module('app', ['ngAnimate', 'toaster', WebService.name, UserRowDirective.name])
     .controller('DataTableCtrl', DataTableController);
 
 

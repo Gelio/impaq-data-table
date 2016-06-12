@@ -1,11 +1,12 @@
 import {User, IUserView} from '../../User';
+import IToasterService = ngtoaster.IToasterService;
 
 export default class DataTableController {
     public users: IUserView[];
     public error: string = '';
     public editing: boolean = false;
 
-    constructor(private WebService) {
+    constructor(private WebService, private toaster: IToasterService) {
         this.WebService.fetchInitialData()
             .then(this.handleInitialData.bind(this))
             .catch(this.handleError.bind(this));
@@ -14,18 +15,40 @@ export default class DataTableController {
     public userRemove(index: number) {
         const user = this.users[index];
         user.frozen = true;
-        // TODO: disable forms while user is being deleted
-        // TODO: Delete user from the list only after the promise succeeded
-        this.WebService.remove(user);
+
+        this.WebService.remove(user)
+            .then(response => {
+                if (response.status === 200) {
+                    this.users.splice(this.users.indexOf(user), 1);
+                }
+            })
+            .catch(error => {
+                user.frozen = false;
+                this.toaster.error('Error occurred', 'User cannot be removed (server response status: ' + error.status + ')');
+
+                // console.error('An error occurred while removing user', user, error);
+            });
     }
 
     public userSave(index: number) {
         const user = this.users[index];
         user.frozen = true;
-        console.log('Saving user', index, this.users[index]);
-        // TODO: disable forms while user is being saved
-        // TODO: change 'edited' to false after it is saved
-        this.WebService.edit(user);
+
+        this.WebService.edit(user)
+            .then(response => {
+                if (response.status === 200) {
+                    user.edited = false;
+                    user.frozen = false;
+                }
+
+            })
+            .catch(error => {
+                // TODO: display error
+                user.frozen = false;
+                this.toaster.error('Error occurred', 'User cannot be saved (server response status: ' + error.status + ')');
+
+                //console.error('An error occurred while saving user', user, error);
+            });
     }
 
     public editSelected() {
