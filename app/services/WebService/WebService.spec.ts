@@ -41,11 +41,13 @@ describe('WebService tests', function() {
         expect(WebService).toBeDefined();
     });
 
-    it('should fetch initial data', () => {
-        $httpBackend.expectGET('users.json').respond(200, {data: mockData});
+    it('should fetch initial data', (done) => {
+        $httpBackend.expectGET('users.json').respond(200, mockData);
 
         WebService.fetchInitialData().then(response => {
-            expect(response.data).toBe(mockData);
+            expect(JSON.stringify(response.data)).toEqual(JSON.stringify(JSON.parse(mockData)));
+            setTimeout(done, 0);    // make sure $digest from $httpBackend.flush is complete before exiting
         });
-    });
+        $httpBackend.flush();
+    }, 5000);
 });
