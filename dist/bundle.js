@@ -27383,7 +27383,7 @@
 	        edit: 'http://users.impaqgroup.com/edit/',
 	        find: 'http://users.impaqgroup.com/find',
 	        findAll: 'http://users.impaqgroup.com/findAll',
-	        initalData: '/users.json',
+	        initalData: 'users.json',
 	        remove: 'http://users.impaqgroup.com/remove/'
 	    }
 	};
@@ -27435,7 +27435,7 @@
 	            // TODO: display error
 	            user.frozen = false;
 	            _this.toaster.error('Error occurred', 'User cannot be saved (server response status: ' + error.status + ')');
-	            //console.error('An error occurred while saving user', user, error);
+	            // console.error('An error occurred while saving user', user, error);
 	        });
 	    };
 	    DataTableController.prototype.editSelected = function () {
@@ -27458,7 +27458,7 @@
 	        this.editing = false;
 	    };
 	    DataTableController.prototype.handleError = function (response) {
-	        this.error = response.data;
+	        this.error = response.statusText;
 	        console.error('Error occurred while fetching initial data', response);
 	    };
 	    DataTableController.prototype.handleInitialData = function (response) {
