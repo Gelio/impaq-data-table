@@ -37,12 +37,10 @@
     </td>
     <td>
         <span ng-show="!user.edited">
-            <!-- TODO: add click events on these buttons -->
             <button role="button" class="btn btn-primary" ng-click="user.edited = true" ng-disabled="user.frozen">Edit</button>
             <button role="button" class="btn btn-danger" ng-click="remove()" ng-disabled="user.frozen">Remove</button>
         </span>
         <span ng-show="user.edited">
-            <!-- TODO: add click events on these buttons -->
             <button role="button" class="btn btn-primary" ng-click="save()" ng-disabled="user.frozen">Save</button>
             <button role="button" class="btn btn-secondary" ng-click="user.edited = false" ng-disabled="user.frozen">Cancel</button>
         </span>

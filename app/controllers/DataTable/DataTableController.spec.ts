@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/main.d.ts" />
 import { IDataTableController } from './DataTableController.d.ts';
-import {IUserView, User} from '../../User';
+import { IUserView } from '../../User';
 const mockData = {
     'users': [
         {
