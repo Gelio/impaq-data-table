@@ -27432,7 +27432,6 @@
 	            }
 	        })
 	            .catch(function (error) {
-	            // TODO: display error
 	            user.frozen = false;
 	            _this.toaster.error('Error occurred', 'User cannot be saved (server response status: ' + error.status + ')');
 	            // console.error('An error occurred while saving user', user, error);
@@ -27480,11 +27479,12 @@
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// import {User, IUserView} from '../../User';
 	"use strict";
 	function UserRowController(scope) {
 	    var backup;
 	    scope.createBackup = function () {
-	        backup = JSON.parse(JSON.stringify(scope.user));
+	        backup = angular.extend({}, scope.user);
 	        backup.edited = false; // When we revert to the backup we don't want to edit anymore
 	    };
 	    scope.cancelEdit = function () {
