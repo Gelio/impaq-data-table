@@ -120,6 +120,32 @@ describe('DataTableController', function() {
     });
 
     describe('multiple user selection - ', () => {
-        
+        it('should enable user editing when one is selected', () => {
+            DataTableController.users[0].selected = true;
+            DataTableController.editSelected();
+            expect(DataTableController.users[0].edited).toBe(true);
+        });
+
+        it('should enable multiple user editing', () => {
+            DataTableController.users = DataTableController.users.map(user => {
+                user.selected = true;
+                return user;
+            });
+
+            DataTableController.editSelected();
+            DataTableController.users.forEach(user => {
+                expect(user.edited).toBe(true);
+            });
+        });
+
+        it('should save multiple selected users', () => {
+            DataTableController.users.forEach(user => {
+                user.selected = true;
+                $httpBackend.expectPOST('http://users.impaqgroup.com/edit/' + user.id).respond(200);
+            });
+
+            DataTableController.saveSelected();
+            $httpBackend.flush();
+        });
     });
 });
