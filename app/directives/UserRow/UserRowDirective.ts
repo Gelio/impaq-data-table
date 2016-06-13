@@ -5,7 +5,7 @@ function UserRowController(scope) {
     let backup;
 
     scope.createBackup = () => {
-        backup = JSON.parse(JSON.stringify(scope.user));
+        backup = angular.extend({}, scope.user);
         backup.edited = false;  // When we revert to the backup we don't want to edit anymore
     };
 
