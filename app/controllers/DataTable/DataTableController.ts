@@ -1,12 +1,13 @@
-import {User, IUserView} from '../../User';
-import IToasterService = ngtoaster.IToasterService;
+import { IUserView } from '../../User';
+import { IDataTableController } from './DataTableController.d.ts';
+import { IWebService } from '../../services/WebService/WebService.d.ts';
 
-export default class DataTableController {
+export default class DataTableController implements IDataTableController {
     public users: IUserView[];
     public error: string = '';
     public editing: boolean = false;
 
-    constructor(private WebService, private toaster: IToasterService) {
+    constructor(private WebService: IWebService, private toaster: ngtoaster.IToasterService) {
         this.WebService.fetchInitialData()
             .then(this.handleInitialData.bind(this))
             .catch(this.handleError.bind(this));
@@ -43,7 +44,6 @@ export default class DataTableController {
 
             })
             .catch(error => {
-                // TODO: display error
                 user.frozen = false;
                 this.toaster.error('Error occurred', 'User cannot be saved (server response status: ' + error.status + ')');
 

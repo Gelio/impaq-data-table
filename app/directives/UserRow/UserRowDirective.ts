@@ -1,5 +1,6 @@
-import {User, IUserView} from '../../User';
+// import {User, IUserView} from '../../User';
 
+import IDirective = ng.IDirective;
 function UserRowController(scope) {
     let backup;
 
@@ -23,7 +24,7 @@ function UserRowController(scope) {
     });
 }
 
-function UserRowDirective() {
+function UserRowDirective(): IDirective {
     return {
         link: UserRowController,
         replace: true,
